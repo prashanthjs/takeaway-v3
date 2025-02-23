@@ -1,0 +1,62 @@
+{
+  "addCompanyCTA": "Add Company",
+  "ctas": {
+    "add": "Add Company"
+  },
+  "deleteConfirmationMessage": "Are you sure want to delete {name}?",
+  "empty": {
+    "title": "No Companies added",
+    "description": "Click below to add a Company",
+    "cta": "Add Company"
+  },
+  "form": {
+    "titles": {
+      "add": "Add Company",
+      "edit": "Edit Company"
+    },
+    "controls": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter Company name"
+      },
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter Company title"
+      },
+      "images": {
+        "label": "Images"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter category description"
+      },
+      "weight": {
+        "label": "Weight",
+        "placeholder": "Enter weight or priority."
+      },
+      "isActive": {
+        "label": "Is Active?"
+      }
+    }
+  },
+  "searchForm": {
+    "controls": {
+      "placeholder": "Search..."
+    }
+  },
+  "sortForm": {
+    "controls": {
+      "sort": {
+        "options": {
+          "nameAsc": "Name (asc)",
+          "nameDesc": "Name (desc)",
+          "createdAtAsc": "Created Date (asc)",
+          "createdAtDesc": "Created Date (desc)",
+          "updatedAtAsc": "Updated Date (asc)",
+          "updatedAtDesc": "Updated Date (desc)"
+        }
+      }
+    }
+  },
+  "title": "Companies"
+}

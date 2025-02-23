@@ -1,0 +1,71 @@
+{
+  "title": "Categories",
+  "ctas": {
+    "add": "Add Category"
+  },
+  "addCategoryCTA": "Add Category",
+  "empty": {
+    "title": "No categories added",
+    "description": "Click below to add a category",
+    "cta": "Add Category"
+  },
+  "form": {
+    "errors": {
+      "duplicateName": "Category name already exists. please try enter a unique value"
+    },
+    "titles": {
+      "add": "Add Category",
+      "edit": "Edit Category"
+    },
+    "controls": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter category name"
+      },
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter category title"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter category description"
+      },
+      "weight": {
+        "label": "Weight",
+        "placeholder": "Enter weight or priority."
+      },
+      "images": {
+        "label": "Images"
+      },
+      "isRecommended": {
+        "label": "Is Recommended?"
+      },
+      "isPopular": {
+        "label": "Is Popular?"
+      },
+      "isActive": {
+        "label": "Is Active?"
+      }
+    }
+  },
+  "searchForm": {
+    "controls": {
+      "placeholder": "Search..."
+    }
+  },
+  "sortForm": {
+    "controls": {
+      "sort": {
+        "options": {
+          "nameAsc": "Name (asc)",
+          "nameDesc": "Name (desc)",
+          "createdAtAsc": "Created Date (asc)",
+          "createdAtDesc": "Created Date (desc)",
+          "updatedAtAsc": "Updated Date (asc)",
+          "updatedAtDesc": "Updated Date (desc)"
+        }
+      }
+    }
+  },
+  "deleteConfirmationMessage": "Are you sure want to delete {name}?"
+}

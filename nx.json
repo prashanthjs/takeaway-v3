@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "generators": {
+    "@nx/next": {
+      "application": {
+        "linter": "eslint",
+        "style": "tailwind"
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.cjs"
+    ],
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+  },
+  "nxCloudId": "678d639190f4b8293ff12651",
+  "plugins": [
+    {
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static",
+        "startTargetName": "start"
+      },
+      "plugin": "@nx/next/plugin"
+    },
+    {
+      "options": {
+        "targetName": "test"
+      },
+      "plugin": "@nx/jest/plugin"
+    },
+    {
+      "options": {
+        "targetName": "lint"
+      },
+      "plugin": "@nx/eslint/plugin"
+    }
+  ],
+  "targetDefaults": {
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
+}

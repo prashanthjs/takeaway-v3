@@ -1,0 +1,38 @@
+{
+  "500": {
+    "title": "Oops! Something went wrong.",
+    "description": "We are having trouble loading your data.",
+    "returnToHome": "Or you can return to the home page",
+    "ctas": {
+      "retry": "Retry",
+      "home": "Go to home"
+    }
+  },
+  "401": {
+    "title": "Oops! Unauthorized Access",
+    "description": "please check your login details or contact your administrator for assistance",
+    "returnToHome": "Or you can return to the login page",
+    "ctas": {
+      "home": "Click here to login"
+    }
+  },
+  "403": {
+    "title": "Oops! Restricted Access",
+    "description": "please check your login details or contact your administrator for assistance",
+    "returnToHome": "Or you can return to the login page",
+    "returnToDashboard": "Or you can return to the dashboard page",
+    "ctas": {
+      "home": "Click here to login",
+      "dashboard": "Home"
+    }
+  },
+
+  "404": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "returnToHome": "Or you can return to the home page",
+    "ctas": {
+      "home": "Home"
+    }
+  }
+}

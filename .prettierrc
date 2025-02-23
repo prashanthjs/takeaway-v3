@@ -1,0 +1,34 @@
+{
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "importOrder": [
+    "^hono(.*)$",
+    "^@hono/(.*)$",
+    "^react(.*)$",
+    "^@react/(.*)$",
+    "^next(.*)$",
+    "^@next/(.*)$",
+    "^@heroui/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@admin-ui/(.*)$",
+    "^@takeaway/(.*)$",
+    "^@api/(.*)$",
+    "^@types/(.*)$",
+    "^@/(.*)$",
+    "^[./]"
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-sort-json"
+  ],
+  "printWidth": 120,
+  "proseWrap": "always",
+  "quoteProps": "consistent",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false
+}

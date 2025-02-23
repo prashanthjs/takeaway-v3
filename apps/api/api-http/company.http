@@ -1,0 +1,75 @@
+
+@baseUrl = http://localhost:4000/api/companies
+@contentType = application/json
+
+@_id = 679aba8a5d4e670379532723
+@_name= test-company-1
+
+### Get Company List
+GET {{baseUrl}}
+Content-Type: {{contentType}}
+
+### Get Company List with Filters
+GET {{baseUrl}}?page=1&limit=10&isActive=true&search=test
+Content-Type: {{contentType}}
+
+### Get Single Company
+GET {{baseUrl}}/{{_name}}
+Content-Type: {{contentType}}
+
+### Create Company
+POST {{baseUrl}}      
+Content-Type: {{contentType}}
+
+{
+    "name": "{{_name}}",
+    "description": "A test company description",
+    "isActive": true,
+    "logoUrl": "https://example.com/logo.png",
+    "address": {
+        "addressLine1": "123 Test Street",
+        "addressLine2": "Suite 100",
+        "city": "Test City",
+        "postCode": "12345",
+        "country": "Test Country"
+    },
+    "phoneNumber": "+1234567890",
+    "email": "contact@testcompany.com",
+    "website": "https://testcompany.com",
+    "_config": {
+        "systemPrompt": "Test system prompt",
+        "aiKey": "test-ai-key",
+        "whatsapp": {
+            "senderId": "test-sender",
+            "accessToken": "test-token",
+            "verifyToken": "test-verify",
+            "apiVersion": "v16.0"
+        }
+    }
+}
+
+### Update Company
+PUT {{baseUrl}}/{{_id}}
+Content-Type: {{contentType}}
+
+{
+    "_id": "{{_id}}",
+    "name": "{{_name}}",
+    "description": "An updated test company description",
+    "isActive": true,
+    "logoUrl": "https://example.com/updated-logo.png",
+    "address": {
+        "addressLine1": "456 Updated Street",
+        "city": "Updated City",
+        "postCode": "54321",
+        "country": "Updated Country"
+    },
+    "phoneNumber": "+9876543210",
+    "email": "updated@testcompany.com",
+    "website": "https://updated-testcompany.com",
+    "__v": 0
+}
+
+### Delete Company
+DELETE {{baseUrl}}/{{_id}}
+Content-Type: {{contentType}}

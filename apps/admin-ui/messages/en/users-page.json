@@ -1,0 +1,104 @@
+{
+  "title": "Users",
+  "ctas": {
+    "add": "Add User"
+  },
+  "addProductCTA": "Add User",
+  "empty": {
+    "title": "No users added",
+    "description": "Click below to add a user",
+    "cta": "Add user"
+  },
+  "form": {
+    "titles": {
+      "add": "Add User",
+      "edit": "Edit User"
+    },
+    "controls": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter email"
+      },
+      "phoneNumber": {
+        "label": "Phone Number",
+        "placeholder": "Enter phone number"
+      },
+
+      "role": {
+        "label": "Role",
+        "placeholder": "select a role"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter category description"
+      },
+      "profileImage": {
+        "label": "Profile Image"
+      },
+      "isActive": {
+        "label": "Is Active?"
+      },
+      "address": {
+        "title": "Address {index}",
+        "addCTA": "Add address",
+        "deleteCTA": "Delete address",
+        "label": "Address",
+
+          "controls": {
+            "addressLine1": {
+              "label": "Address Line 1",
+              "placeholder": "Enter address line 1"
+            },
+            "addressLine2": {
+              "label": "Address Line 2",
+              "placeholder": "Enter address line 2"
+            },
+            "addressLine3": {
+              "label": "Address Line 3",
+              "placeholder": "Enter address line 3"
+            },
+            "city": {
+              "label": "City/Town",
+              "placeholder": "Enter city/town"
+            },
+            "postcode": {
+              "label": "Postcode",
+              "placeholder": "Enter Postcode"
+            },
+            "country": {
+              "label": "Country",
+              "placeholder": "Enter country"
+            },
+            "isDefault": {
+              "label": "Is Default?"
+            }
+          }
+        }
+
+    }
+  },
+  "searchForm": {
+    "controls": {
+      "placeholder": "Search..."
+    }
+  },
+  "sortForm": {
+    "controls": {
+      "sort": {
+        "options": {
+          "nameAsc": "Name (asc)",
+          "nameDesc": "Name (desc)",
+          "createdAtAsc": "Created Date (asc)",
+          "createdAtDesc": "Created Date (desc)",
+          "updatedAtAsc": "Updated Date (asc)",
+          "updatedAtDesc": "Updated Date (desc)"
+        }
+      }
+    }
+  },
+  "deleteConfirmationMessage": "Are you sure want to delete {name}?"
+}

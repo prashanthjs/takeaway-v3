@@ -1,0 +1,63 @@
+{
+  "form": {
+    "messages": {
+      "required": "{control} is required",
+      "min": "{control} must be at least {value} characters",
+      "max": "{control} must be at most {value} characters",
+      "int": "{control} must be a whole number",
+      "idRegex": "{control} should contain small characters, numbers, underscore, hyphen",
+      "selectOne": "Please select at least one {control}",
+      "email": "Invalid email please enter a valid one"
+    },
+    "yesNoControl": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "fileInput": {
+      "dropMessage": "Click here or drop images here..."
+    }
+  },
+  "formModal": {
+    "actions": {
+      "submit": "Save",
+      "cancel": "Cancel"
+    }
+  },
+  "yes": "Yes",
+  "no": "No",
+  "active": "Active",
+  "inActive": "In Active",
+  "recommended": "Recommended",
+  "popular": "Popular",
+  "edit": "Edit",
+  "delete": "Delete",
+  "loading": "Loading...",
+  "refreshing": "Refreshing...",
+  "deleting": "Deleting...",
+  "saving": "Saving...",
+  "orderStatus": {
+    "DRAFT": "Draft",
+    "NEW": "New",
+    "ACCEPTED": "Accepted",
+    "ON_HOLD": "On Hold",
+    "IN_PROGRESS": "In Progress",
+    "READY": "Ready",
+    "IN_DELIVERY": "In Delivery",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "REJECTED": "Rejected"
+  },
+  "orderType": {
+    "DELIVERY": "Delivery",
+    "COLLECTION": "Collection"
+  },
+  "role": {
+    "superAdmin": "Super Admin",
+    "admin": "Admin"
+  },
+  "createdAt": "Created",
+  "updatedAt": "Updated",
+  "logout": "Sign out",
+  "navigation": "Navigation",
+  "signedInAs": "Signed in as"
+}

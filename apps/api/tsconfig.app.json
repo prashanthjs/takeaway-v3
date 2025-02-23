@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"],
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "../../libs/common/src/**/*.ts"]
+}

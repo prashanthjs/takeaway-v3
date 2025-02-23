@@ -1,0 +1,63 @@
+@baseUrl = http://localhost:4000/api/branches
+@contentType = application/json
+
+@_id = 679abce4ebd033323db6f647
+@_name = test-branch-3
+@_companyId = 679aba8a5d4e670379532723
+
+### Get Branch List
+GET {{baseUrl}}?companyId={{_companyId}}
+Content-Type: {{contentType}}
+
+### Get Branch List with Filters
+GET {{baseUrl}}?page=1&limit=10&search=test&companyId={{_companyId}}
+Content-Type: {{contentType}}
+
+### Get Single Branch
+GET {{baseUrl}}/{{_id}}
+Content-Type: {{contentType}}
+
+### Create Branch
+POST {{baseUrl}}
+Content-Type: {{contentType}}
+
+{
+    "name": "{{_name}}",
+    "title": "Test Branch",
+    "_companyId": "{{_companyId}}",
+    "description": "A test branch description",
+    "isActive": true,
+    "phoneNumber": "+1234567890",
+    "email": "test@test.com",
+    "address": {
+        "addressLine1": "123 Test Street",
+        "addressLine2": "Suite 100",
+        "city": "Test City",
+        "postCode": "12345",
+        "country": "Test Country"
+    }
+}
+
+### Update Branch
+PUT {{baseUrl}}/{{_id}}
+Content-Type: {{contentType}}
+
+{
+    "name": "{{_name}}",
+    "title": "Updated Test Branch",
+    "_companyId": "{{_companyId}}",
+    "description": "An updated test branch description",
+    "isActive": true,
+    "phoneNumber": "+0987654321",
+    "address": {
+        "addressLine1": "456 Updated Street",
+        "addressLine2": "Suite 200",
+        "city": "Updated City",
+        "postCode": "54321",
+        "country": "Updated Country"
+    }
+}
+
+### Delete Branch
+DELETE {{baseUrl}}/{{_id}}
+Content-Type: {{contentType}}
