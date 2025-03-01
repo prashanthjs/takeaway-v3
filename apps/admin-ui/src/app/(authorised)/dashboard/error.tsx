@@ -1,10 +1,9 @@
 'use client';
 
-export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-  return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button onClick={() => reset()}>Try again</button>
-    </div>
-  );
+import { ErrorPage } from '@admin-ui/components/error-page';
+
+export default function DashboardError({ error }: { error: Error & { digest?: string; cause?: unknown } }) {
+  console.log('Dashboard Error', JSON.stringify(error), error.cause);
+
+  return <ErrorPage error={error?.message ?? 'Something went wrong.'} />;
 }

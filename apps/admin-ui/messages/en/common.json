@@ -1,4 +1,9 @@
 {
+  "active": "Active",
+  "createdAt": "Created",
+  "delete": "Delete",
+  "deleting": "Deleting...",
+  "edit": "Edit",
   "form": {
     "messages": {
       "required": "{control} is required",
@@ -23,41 +28,29 @@
       "cancel": "Cancel"
     }
   },
-  "yes": "Yes",
-  "no": "No",
-  "active": "Active",
   "inActive": "In Active",
-  "recommended": "Recommended",
-  "popular": "Popular",
-  "edit": "Edit",
-  "delete": "Delete",
   "loading": "Loading...",
+  "logout": "Sign out",
+  "navigation": "Navigation",
+  "no": "No",
+  "popular": "Popular",
+  "recommended": "Recommended",
   "refreshing": "Refreshing...",
-  "deleting": "Deleting...",
-  "saving": "Saving...",
-  "orderStatus": {
-    "DRAFT": "Draft",
-    "NEW": "New",
-    "ACCEPTED": "Accepted",
-    "ON_HOLD": "On Hold",
-    "IN_PROGRESS": "In Progress",
-    "READY": "Ready",
-    "IN_DELIVERY": "In Delivery",
-    "COMPLETED": "Completed",
-    "CANCELLED": "Cancelled",
-    "REJECTED": "Rejected"
-  },
-  "orderType": {
-    "DELIVERY": "Delivery",
-    "COLLECTION": "Collection"
-  },
   "role": {
     "superAdmin": "Super Admin",
     "admin": "Admin"
   },
-  "createdAt": "Created",
+  "saving": "Saving...",
+  "search": {
+    "placeholder": "Search..."
+  },
+  "signedInAs": "Signed in as",
+  "sort": {
+    "title": "Sort by",
+    "direction": {
+      "title": "Sort direction"
+    }
+  },
   "updatedAt": "Updated",
-  "logout": "Sign out",
-  "navigation": "Navigation",
-  "signedInAs": "Signed in as"
+  "yes": "Yes"
 }

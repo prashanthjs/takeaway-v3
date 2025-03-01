@@ -4,7 +4,7 @@ export const config = {
   globalPrefix: '/api',
   databaseUrl: process.env.DATABASE_URL ?? '',
   corsRegex: process.env.CORS_REGEX,
-  port: Number(process.env.PORT) ?? 4000,
+  port: Number(process.env.PORT ?? 4000),
   whatsapp: {
     senderId: process.env.WA_SENDER_NUMBER_ID,
     accessToken: process.env.WA_ACCESS_TOKEN,

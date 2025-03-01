@@ -25,13 +25,17 @@ export const viewport: Viewport = {
   ],
 };
 
+// <meta name="viewport" content="width=device-width, initial-scale=1.0"> add this in the head
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
   return (
     <html suppressHydrationWarning lang={locale}>
-      <head />
-      <body className={clsx('relative h-full w-full font-sans antialiased', fontSans.variable)}>
+      <body
+        suppressHydrationWarning
+        className={clsx('relative h-full w-full font-sans antialiased', fontSans.variable)}
+      >
         <main className="relative flex min-h-screen w-screen flex-col">
           <NextIntlClientProvider messages={messages}>
             <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>{children}</Providers>

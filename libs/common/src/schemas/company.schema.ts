@@ -7,7 +7,18 @@ export const companyParamSchema = z.object({
 export const companySchema = z
   .object({
     _id: z.string(),
-    name: z.string().regex(/^[a-z0-9_-]+$/, 'Name can only contain alphanumeric characters, underscores, and hyphens'),
+    name: z
+      .string({
+        required_error: 'Name is required',
+        invalid_type_error: 'Name must be a string',
+      })
+      .min(2, 'Name must be at least 2 characters long')
+      .max(64, 'Name must be at most 64 characters long')
+      .regex(/^[a-z0-9_-]+$/, 'Name can only contain alphanumeric characters, underscores, and hyphens'),
+    title: z
+      .string()
+      .min(2, 'Title must be at least 2 characters long')
+      .max(64, 'Title must be at most 64 characters long'),
     description: z.string().optional(),
     isActive: z.boolean(),
     isArchived: z.boolean().optional().default(false),
@@ -46,11 +57,11 @@ export const companySchema = z
 
 export const companyListQuerySchema = z.object({
   search: z.string().optional(),
-  isActive: z.boolean().optional(),
+  isActive: z.union([z.string(), z.boolean()]).pipe(z.coerce.boolean()).optional(),
   sortField: z.enum(['name', 'createdAt', 'updatedAt', 'isActive']).optional().default('createdAt'),
   sortOrder: z.enum(['asc', 'desc']).optional().default('desc'),
-  page: z.number().optional().default(1),
-  limit: z.number().optional().default(10),
+  page: z.union([z.string(), z.number()]).pipe(z.coerce.number()).optional().default(1),
+  limit: z.union([z.string(), z.number()]).pipe(z.coerce.number()).optional().default(10),
 });
 
 export const companyListResultSchema = z.object({
@@ -68,6 +79,7 @@ export const companyCreateSchema = companySchema
     __v: true,
     createdAt: true,
     updatedAt: true,
+    isArchived: true,
   })
   .openapi('CompanyCreateSchema');
 
@@ -75,6 +87,7 @@ export const companyUpdateSchema = companySchema
   .omit({
     createdAt: true,
     updatedAt: true,
+    isArchived: true,
   })
   .openapi('CompanyUpdateSchema');
 

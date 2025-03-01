@@ -1,13 +1,12 @@
 import { cors } from 'hono/cors';
+import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
-
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
-
 import { config } from './config';
 import { databaseInit } from './inits/database.init';
-import { errorHandler, notFound } from './middlewares/error.middleware';
+import { notFound, errorHandler } from './middlewares/error.middleware';
 import { branchRoute } from './routes/branch.route';
 import { companyRoute } from './routes/company.route';
 import { logger as customLogger } from './utils/logger';
@@ -34,8 +33,10 @@ app.route('/branches', branchRoute);
 
 /** Error Handlers */
 // Error Handler
-app.onError((err, c) => errorHandler(c));
+
 app.notFound(c => notFound(c));
+app.onError((err, c) => errorHandler(err, c));
+
 /** end of error handlers */
 
 /** Swagger UI & OpenAPI */

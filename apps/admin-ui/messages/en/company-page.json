@@ -5,7 +5,7 @@
   },
   "deleteConfirmationMessage": "Are you sure want to delete {name}?",
   "empty": {
-    "title": "No Companies added",
+    "title": "No Companies found",
     "description": "Click below to add a Company",
     "cta": "Add Company"
   },
@@ -23,39 +23,53 @@
         "label": "Title",
         "placeholder": "Enter Company title"
       },
-      "images": {
-        "label": "Images"
-      },
       "description": {
         "label": "Description",
-        "placeholder": "Enter category description"
-      },
-      "weight": {
-        "label": "Weight",
-        "placeholder": "Enter weight or priority."
+        "placeholder": "Enter Company description"
       },
       "isActive": {
         "label": "Is Active?"
+      },
+      "addressLine1": {
+        "label": "Address Line 1",
+        "placeholder": "Enter address line 1"
+      },
+      "addressLine2": {
+        "label": "Address Line 2",
+        "placeholder": "Enter address line 2"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "Enter city"
+      },
+      "postCode": {
+        "label": "Post Code",
+        "placeholder": "Enter post code"
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "Enter country"
+      },
+      "phoneNumber": {
+        "label": "Phone Number",
+        "placeholder": "Enter phone number"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter email"
+      },
+      "website": {
+        "label": "Website",
+        "placeholder": "Enter website"
       }
     }
   },
-  "searchForm": {
-    "controls": {
-      "placeholder": "Search..."
-    }
-  },
-  "sortForm": {
-    "controls": {
-      "sort": {
-        "options": {
-          "nameAsc": "Name (asc)",
-          "nameDesc": "Name (desc)",
-          "createdAtAsc": "Created Date (asc)",
-          "createdAtDesc": "Created Date (desc)",
-          "updatedAtAsc": "Updated Date (asc)",
-          "updatedAtDesc": "Updated Date (desc)"
-        }
-      }
+  "sort": {
+    "title": "Sort by",
+    "options": {
+      "name": "Name",
+      "createdAt": "Created Date",
+      "updatedAt": "Updated Date"
     }
   },
   "title": "Companies"

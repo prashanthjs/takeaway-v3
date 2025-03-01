@@ -1,10 +1,12 @@
+'use client';
+
 import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@heroui/react';
 import { cn } from '@admin-ui/lib/utils';
 
-export type FormModalProps = {
+type Props = {
   title?: string;
   children: ReactNode;
   isOpen: boolean;
@@ -26,7 +28,7 @@ export function FormModal({
   isPending,
   isDisabled,
   isCompact = false,
-}: FormModalProps) {
+}: Props) {
   const t = useTranslations('common');
   const modalRef = useRef<HTMLElement | null>(null);
   const { isOpen: isModalOpen, onClose: handleClose } = useDisclosure({ isOpen });
@@ -44,7 +46,6 @@ export function FormModal({
     function () {
       if (isOpen && modalRef.current) {
         const modalHeight = modalRef.current.offsetHeight;
-        console.log('Modal height:', modalHeight);
       }
     },
     [isOpen, modalRef],

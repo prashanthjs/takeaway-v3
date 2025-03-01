@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-
 import { CompanyType } from '@takeaway/common';
 
 export const companyAddressModelSchema = new Schema({
@@ -24,6 +23,7 @@ export const companyConfigModelSchema = new Schema({
 export const companyModelSchema = new Schema<CompanyType>(
   {
     name: { type: String, unique: true },
+    title: String,
     description: String,
     isActive: Boolean,
     logoUrl: String,

@@ -4,7 +4,7 @@ import { Home, ServerCrash } from 'lucide-react';
 import { LayoutTitle } from '@admin-ui/components/layout-title';
 import { MaxWidthWrapper } from '@admin-ui/components/max-width-wrapper';
 
-export default function NotFoundPage() {
+export default function DashboardNotFoundPage() {
   const t = useTranslations('errorPage.403');
 
   return (

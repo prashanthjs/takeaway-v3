@@ -1,14 +1,16 @@
 import { Context } from 'hono';
-import type { StatusCode } from 'hono/dist/types/utils/http-status';
+import { HTTPException } from 'hono/http-exception';
 
 // Error Handler
-export function errorHandler(c: Context) {
-  console.log(c.res.status);
-  c.status((c.res.status as StatusCode) || 500);
+export function errorHandler(err: Error | HTTPException, c: Context) {
+  const status = err instanceof HTTPException ? err.status : 500;
+
+  c.status(status);
+
   return c.json({
     success: false,
-    message: c.error?.message,
-    status: c.res.status,
+    message: err.message ?? 'Something went wrong.',
+    status: status,
     stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
   });
 }

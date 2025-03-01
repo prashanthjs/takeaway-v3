@@ -1,13 +1,13 @@
 import { Bird } from 'lucide-react';
 
-type EmptyPageProps = {
+type Props = {
   title?: string;
   description?: string;
   children?: React.ReactNode;
   className?: string;
 };
 
-export function EmptyPage({ title, description, children, className = '' }: EmptyPageProps) {
+export function SectionEmpty({ title, description, children, className = '' }: Props) {
   return (
     <div className={className}>
       <section className="flex  flex-col items-center justify-center gap-8 p-2 pt-32">

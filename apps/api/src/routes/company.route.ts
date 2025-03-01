@@ -104,6 +104,7 @@ companyRoute.openapi(
   async c => {
     const payload = c.req.valid('json');
     if (await getCompany({ companyId: payload.name })) {
+      console.log('Company already exists');
       throw new HTTPException(409, { message: 'Company already exists' });
     }
     const response = await createCompany({
