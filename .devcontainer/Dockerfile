@@ -5,6 +5,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
   && echo "$SNIPPET" >> "/root/.bashrc"
 
-RUN su node -c "npm install --global corepack@latest"
 RUN su node -c "npm install --global nx"
-RUN su node -c "corepack enable"
+RUN su node -c "pnpm -v"

@@ -63,3 +63,5 @@ out
  
  # Environment variables
 .env.local
+.pnpm-store
+.pnpm-store/**/*
