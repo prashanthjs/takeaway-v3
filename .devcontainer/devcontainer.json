@@ -1,0 +1,130 @@
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+  "name": "Takeaway Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      // Update 'VARIANT' to pick a Node.js version: 10, 12, 14
+      "VARIANT": "20-buster"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "automatic",
+      "uid": "automatic",
+      "gid": "automatic",
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "nonFreePackages": false
+    }
+  },
+
+  "mounts": [
+    "source=${env:USERPROFILE}/.aws,target=/root/.aws,type=bind",
+    "source=${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind",
+    "source=${env:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind",
+    "source=${env:USERPROFILE}/.git-credentials,target=/root/.git-credentials,type=bind",
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=${localWorkspaceFolderBasename}-extensions,target=/home/vscode/.vscode-server/extensions,type=volume",
+    "source=${localWorkspaceFolderBasename}-bashhistory,target=/commandhistory,type=volume",
+    "source=${localWorkspaceFolderBasename}-local,target=/home/vscode/.local,type=volume",
+    "source=${localWorkspaceFolderBasename}-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000, 4000],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "pnpm install",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "nrwl.angular-console",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "dbaeumer.vscode-eslint",
+        "mutantdino.resourcemonitor",
+        "ms-vscode-remote.remote-containers",
+        "foxundermoon.shell-format",
+        "ms-azuretools.vscode-docker",
+        "dotenv.dotenv-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "prettier.configPath": ".prettierrc",
+        "files.autoSave": "afterDelay",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSaveMode": "file",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+        "eslint.format.enable": true,
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "search.exclude": {
+          "**/.yarn": true,
+          "**/.pnp.*": true
+        },
+        // "typescript.preferences.importModuleSpecifier": "relative",
+        "typescript.preferences.quoteStyle": "single",
+        "editor.bracketPairColorization.enabled": true,
+        "editor.guides.bracketPairs": "active",
+        "editor.formatOnPaste": true,
+        //"editor.formatOnType": true,
+        "files.exclude": {
+          "**/.git": true,
+          "**/.DS_Store": true,
+          "**/Thumbs.db": true,
+          "**/node_modules": true
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[dotenv]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
+        "[ignore]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
+        "[shellscript]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
+        "[properties]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        }
+      }
+    }
+  },
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "root"
+}
