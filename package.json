@@ -55,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.9",
     "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@nx/esbuild": "20.5.0",
     "@nx/eslint": "20.5.0",
@@ -103,6 +104,15 @@
     "overrides": {
       "@types/react": "19.0.10",
       "@types/react-dom": "19.0.4"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@parcel/watcher",
+      "@sentry/cli",
+      "@swc/core",
+      "esbuild",
+      "nx",
+      "sharp"
+    ]
   }
 }

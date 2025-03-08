@@ -3,7 +3,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
 const createNextIntlPlugin = require('next-intl/plugin');
-const { withSentryConfig } = require('@sentry/nextjs');
+//const { withSentryConfig } = require('@sentry/nextjs');
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -35,7 +35,7 @@ const sentryConfigOptions = {
  * @param {import('@nx/next/plugins/with-nx').WithNxOptions} passedConfig
  * @returns
  */
-const sentryEnhancedConfig = passedConfig => withSentryConfig(passedConfig, sentryConfigOptions);
+//const sentryEnhancedConfig = passedConfig => withSentryConfig(passedConfig, sentryConfigOptions);
 
 const plugins = [
   // Add more Next.js plugins to this list if needed.
