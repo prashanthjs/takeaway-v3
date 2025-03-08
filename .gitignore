@@ -5,6 +5,7 @@ dist
 tmp
 out-tsc
 .history
+logs
 
 # dependencies
 node_modules
@@ -58,8 +59,7 @@ out
  cypress/videos
  cypress/screenshots
  
- # Logs
- /logs
+
  
  # Environment variables
 .env.local
