@@ -11,15 +11,6 @@ type CompanyCardProps = {
 export function CompanyCard({ company }: CompanyCardProps) {
   const image = company.logoUrl ?? '/card.png';
   const t = useTranslations();
-
-  const onEdit = (id: string) => {};
-
-  const onDelete = (id: string) => {
-    // updateSearchParams({
-    //   action: FormActionEnum.Delete,
-    //   editId: id,
-    // });
-  };
   return (
     <Card className="py-2">
       <CardBody className="overflow-visible">
