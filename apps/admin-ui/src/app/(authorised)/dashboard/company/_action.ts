@@ -1,6 +1,5 @@
 'use server';
 
-import { FieldValues } from 'react-hook-form';
 import { flattenValidationErrors } from 'next-safe-action';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
