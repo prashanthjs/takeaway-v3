@@ -2,7 +2,7 @@
 
 import { useController, UseControllerProps } from 'react-hook-form';
 import { Input as BaseInput, InputProps } from '@heroui/react';
-import { useNumberFormatter } from '@admin-ui/hooks/formatter/use-number-formatter';
+import { useNumberFormatter } from '@/hooks/formatter/use-number-formatter';
 
 export function CurrencyInput(props: UseControllerProps<any> & InputProps) {
   const { currencySymbol } = useNumberFormatter();

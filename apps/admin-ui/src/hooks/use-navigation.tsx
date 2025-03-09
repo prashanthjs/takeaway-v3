@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-
 import { BarcodeIcon, BoxesIcon, HomeIcon, MessageSquareIcon, ShoppingBagIcon, UsersIcon } from 'lucide-react';
 
 export function useNavigation() {
@@ -17,6 +16,12 @@ export function useNavigation() {
       title: t('dashboard'),
       icon: HomeIcon,
       href: '/dashboard',
+    },
+    {
+      name: 'companies',
+      title: t('companies'),
+      icon: BoxesIcon,
+      href: '/dashboard/company',
     },
     {
       name: 'categories',

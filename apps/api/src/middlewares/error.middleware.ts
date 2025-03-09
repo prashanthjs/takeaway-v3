@@ -17,8 +17,10 @@ export function errorHandler(err: Error | HTTPException, c: Context) {
 
 // Not Found Handler
 export const notFound = (c: Context) => {
+  c.status(404);
   return c.json({
     success: false,
+    status: 404,
     message: `Not Found - [${c.req.method}] ${c.req.url}`,
   });
 };

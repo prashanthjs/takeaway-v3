@@ -18,3 +18,7 @@ export function getInitials(name: string) {
     .join('')
     .toUpperCase();
 }
+
+export function getPlaceholderImage(name: string) {
+  return `https://placehold.co/240X120?text=${name}`;
+}

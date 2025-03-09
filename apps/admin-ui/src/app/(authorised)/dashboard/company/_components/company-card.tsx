@@ -1,6 +1,7 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Card, CardBody, Chip, Image } from '@heroui/react';
 import { CompanyType } from '@takeaway/common';
+import { getPlaceholderImage } from '@/utils/common';
 import { CompanyDeleteButton } from './company-delete-button';
 import { CompanyEditButton } from './company-edit-button';
 
@@ -8,18 +9,9 @@ type CompanyCardProps = {
   company: CompanyType;
 };
 
-export function CompanyCard({ company }: CompanyCardProps) {
-  const image = company.logoUrl ?? '/card.png';
-  const t = useTranslations();
-
-  const onEdit = (id: string) => {};
-
-  const onDelete = (id: string) => {
-    // updateSearchParams({
-    //   action: FormActionEnum.Delete,
-    //   editId: id,
-    // });
-  };
+export async function CompanyCard({ company }: CompanyCardProps) {
+  const image = company.logoUrl ?? getPlaceholderImage(company.title);
+  const t = await getTranslations();
   return (
     <Card className="py-2">
       <CardBody className="overflow-visible">
@@ -30,15 +22,15 @@ export function CompanyCard({ company }: CompanyCardProps) {
 
           <div className="flex-1">
             <div className="flex flex-row justify-between align-middle">
-              <p className={'line-clamp-1'}>{company.name}</p>
+              <p className={'line-clamp-1'}>{company.title}</p>
               <div>
                 <div className="flex items-center gap-2">
                   <CompanyEditButton companyId={company._id} />
-                  <CompanyDeleteButton companyId={company._id} />
+                  <CompanyDeleteButton companyId={company._id} name={company.name} />
                 </div>
               </div>
             </div>
-            <p className="line-clamp-2 text-sm text-default-500">{company.description}</p>
+            <p className="line-clamp-2 text-sm text-default-500 mt-2">{company.description}</p>
 
             <div className="mt-6 flex gap-2">
               {company.isActive && (

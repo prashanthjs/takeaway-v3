@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { Avatar, Divider, Tooltip } from '@heroui/react';
 import { motion } from 'framer-motion';
 import { LogOutIcon, LucideIcon } from 'lucide-react';
-import { ActiveLink } from '@admin-ui/components/active-link';
-import { Logo } from '@admin-ui/components/logo';
-import { useRoleFormatter } from '@admin-ui/hooks/formatter/use-role-formatter';
-import { useLayout } from '@admin-ui/hooks/use-layout';
-import { useNavigation } from '@admin-ui/hooks/use-navigation';
-import { useUser } from '@admin-ui/hooks/use-user';
-import { cn, getInitials } from '@admin-ui/lib/utils';
+import { ActiveLink } from '@/components/active-link';
+import { Logo } from '@/components/logo';
+import { useRoleFormatter } from '@/hooks/formatter/use-role-formatter';
+import { useLayout } from '@/hooks/use-layout';
+import { useNavigation } from '@/hooks/use-navigation';
+import { useUser } from '@/hooks/use-user';
+import { cn, getInitials } from '@/utils/common';
 
 export function Sidebar() {
   const { user } = useUser();

@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
     "strict": true,
@@ -17,10 +16,18 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
+    "paths": {
+      "@/*": ["apps/admin-ui/src/*"],
+      "@admin-ui/*": ["apps/admin-ui/src/*"],
+      "@api/*": ["apps/api/src/*"],
+      "@takeaway/common": ["libs/common/src/index.ts"]
+    }
   },
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"],
+  "extends": "../../tsconfig.base.json",
   "include": [
     "**/*.ts",
     "**/*.tsx",
@@ -29,7 +36,6 @@
     "../../apps/admin-ui/.next/types/**/*.ts",
     "../../dist/apps/admin-ui/.next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts",
-  ],
-  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"],
+    ".next/types/**/*.ts"
+  ]
 }

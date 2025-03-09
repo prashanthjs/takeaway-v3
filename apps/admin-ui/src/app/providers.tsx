@@ -2,9 +2,10 @@
 
 import { ReactNode } from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import type { ThemeProviderProps as NextThemesProviderProps } from 'next-themes/dist/types';
+import type { ThemeProviderProps as NextThemesProviderProps } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { HeroUIProvider } from '@heroui/system';
+import { ToastProvider } from '@heroui/toast';
 
 export interface ProvidersProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
   return (
     <HeroUIProvider navigate={router.push}>
+      <ToastProvider toastOffset={75} />
       <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
     </HeroUIProvider>
   );

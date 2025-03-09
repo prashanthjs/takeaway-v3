@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { Avatar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, LogOutIcon } from 'lucide-react';
-import { MaxWidthWrapper } from '@admin-ui/components/max-width-wrapper';
-import { useRoleFormatter } from '@admin-ui/hooks/formatter/use-role-formatter';
-import { useLayout } from '@admin-ui/hooks/use-layout';
-import { useLayoutTitle } from '@admin-ui/hooks/use-layout-title';
-import { useUser } from '@admin-ui/hooks/use-user';
-import { getInitials } from '@admin-ui/lib/utils';
+import { MaxWidthWrapper } from '@/components/max-width-wrapper';
+import { useRoleFormatter } from '@/hooks/formatter/use-role-formatter';
+import { useLayout } from '@/hooks/use-layout';
+import { useLayoutTitle } from '@/hooks/use-layout-title';
+import { useUser } from '@/hooks/use-user';
+import { getInitials } from '@/utils/common';
 
 export function Header() {
   const { title } = useLayoutTitle();

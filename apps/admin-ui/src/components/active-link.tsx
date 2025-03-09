@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@admin-ui/lib/utils';
+import { cn } from '@/utils/common';
 
 type ActiveLinkProps = LinkProps & {
   children: ReactNode;

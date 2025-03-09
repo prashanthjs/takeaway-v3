@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Input as BaseInput } from '@heroui/react';
 import { Search } from 'lucide-react';
 import { useDebouncedCallback } from 'use-debounce';
-import { useSearchParams } from '@admin-ui/hooks/use-search-params';
+import { useSearchParams } from '@/hooks/use-search-params';
 
 export function SectionSearch() {
   const t = useTranslations('common.search');

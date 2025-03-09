@@ -1,4 +1,4 @@
-import { cn } from '@admin-ui/lib/utils';
+import { cn } from '@/utils/common';
 import { CardSkeleton } from './card-skeleton';
 
 type CardSkeletonsProps = {

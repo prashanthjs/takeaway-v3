@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button, Select, SelectItem } from '@heroui/react';
 import { ArrowDownAZIcon, ArrowUpAZIcon } from 'lucide-react';
-import { useSearchParams } from '@admin-ui/hooks/use-search-params';
+import { useSearchParams } from '@/hooks/use-search-params';
 
 export type SortDirection = 'asc' | 'desc';
 

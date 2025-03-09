@@ -1,9 +1,18 @@
 {
-  "addCompanyCTA": "Add Company",
   "ctas": {
     "add": "Add Company"
   },
-  "deleteConfirmationMessage": "Are you sure want to delete {name}?",
+  "deleteMessages": {
+    "confirm": "Are you sure want to delete {name}?",
+    "success": {
+      "title": "Success",
+      "description": "Company {name} deleted successfully"
+    },
+    "error": {
+      "title": "Error",
+      "description": "Cannot delete company {name}"
+    }
+  },
   "empty": {
     "title": "No Companies found",
     "description": "Click below to add a Company",
@@ -13,6 +22,9 @@
     "titles": {
       "add": "Add Company",
       "edit": "Edit Company"
+    },
+    "messages": {
+      "success": "Company saved successfully"
     },
     "controls": {
       "name": {

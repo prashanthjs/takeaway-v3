@@ -1,7 +1,7 @@
 'use server';
 
-import { ZodIssue } from 'zod';
-import { RequestState } from '@admin-ui/types/form-action';
+import qs from 'qs';
+import { ApiError } from './error.util';
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -10,15 +10,20 @@ export async function fetchData<T>({
   headers,
   method,
   body,
+  query,
 }: {
   url: string;
   headers?: Record<string, string>;
   method?: string;
   body?: Record<string, unknown>;
-}): Promise<RequestState<T>> {
+  query?: Record<string, unknown>;
+}): Promise<{ data: T; status: number }> {
   url = `${apiBaseUrl}${url}`;
   url = url.replace('//', '/');
 
+  if (query) {
+    url = `${url}?${qs.stringify(query)}`;
+  }
   const res = await fetch(`${url}`, {
     method: method || 'GET',
     headers: {
@@ -28,29 +33,20 @@ export async function fetchData<T>({
     body: body && JSON.stringify(body),
   });
 
-  let isSuccess = res.ok;
-  let errors: ZodIssue[] | null = null;
-  let data: T | null = null;
-  let message: string | null = null;
   if (!res.ok) {
-    isSuccess = false;
     const body = await res.json();
-    errors = body?.error?.issues;
-    message = body?.message;
-    console.log(url);
-    console.log(res.statusText);
-    console.log('Errors', JSON.stringify(errors, null, 2));
-    console.log('Message', message);
-  } else {
-    data = await res.json();
+    throw new ApiError({
+      message: body?.message ?? res.statusText,
+      status: res.status,
+      statusText: res.statusText,
+      issues: body?.error?.issues ?? [],
+    });
   }
 
+  const data: T = (await res.json().catch(() => null)) as T;
+
   return {
-    isSuccess,
     data,
-    errors,
     status: res.status,
-    statusText: res.statusText,
-    message: message,
   };
 }

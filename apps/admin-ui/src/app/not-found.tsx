@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Button, Card, CardBody, Link } from '@heroui/react';
 import { Home, ServerCrash } from 'lucide-react';
-import { Logo } from '@admin-ui/components/logo';
+import { Logo } from '@/components/logo';
 
 export default function NotFound() {
   const t = useTranslations('errorPage.404');

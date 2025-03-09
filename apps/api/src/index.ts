@@ -1,5 +1,4 @@
 import { cors } from 'hono/cors';
-import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
 import { swaggerUI } from '@hono/swagger-ui';
@@ -34,8 +33,8 @@ app.route('/branches', branchRoute);
 /** Error Handlers */
 // Error Handler
 
-app.notFound(c => notFound(c));
 app.onError((err, c) => errorHandler(err, c));
+app.notFound(c => notFound(c));
 
 /** end of error handlers */
 

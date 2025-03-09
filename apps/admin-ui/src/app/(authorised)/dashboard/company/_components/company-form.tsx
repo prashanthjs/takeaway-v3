@@ -1,83 +1,124 @@
 'use client';
 
+import { useEffect } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
-import { z } from 'zod';
-import { Input } from '@admin-ui/components/form-inputs/input';
-import { YesNoRadioGroup } from '@admin-ui/components/form-inputs/yes-no-radio-group';
-import { SectionFormModal } from '@admin-ui/components/section-form-modal';
-import { useSearchParams } from '@admin-ui/hooks/use-search-params';
-import { FormActionEnum } from '@admin-ui/types/form-action';
-import { companyCreateSchema } from '@takeaway/common';
-import { createCompany } from '../_action';
+import { useAction } from 'next-safe-action/hooks';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CompanyCreateType, CompanyUpdateType, companyCreateSchema, companyUpdateSchema } from '@takeaway/common';
+import { FormErrorMessage } from '@/components/form-error-message';
+import { Input } from '@/components/form-inputs/input';
+import { Textarea } from '@/components/form-inputs/textarea';
+import { YesNoRadioGroup } from '@/components/form-inputs/yes-no-radio-group';
+import { FormModal } from '@/components/form-modal';
+import { FormSuccessMessage } from '@/components/form-success-message';
+import { useSearchParams } from '@/hooks/use-search-params';
+import { saveCompanyAction, updateCompanyAction } from '../_action';
 
-export const createCompanyFormSchema = companyCreateSchema.extend({
-  isActive: z.string().transform((value: string) => value === '1'),
-});
+type FormType = CompanyCreateType | CompanyUpdateType;
 
-export function CompanyForm() {
+type Props = {
+  defaultValues: FormType;
+  isOpen: boolean;
+};
+
+export function CompanyForm({ defaultValues, isOpen }: Props) {
   const t = useTranslations('company.form');
-  const { getSearchParam, updateSearchParams } = useSearchParams();
-  const action = getSearchParam('action');
-  const editId = getSearchParam('editId');
+  const { updateSearchParams } = useSearchParams();
+  const isEdit = !!(defaultValues as CompanyUpdateType)?._id;
+  const schemaToUse = isEdit ? companyUpdateSchema : companyCreateSchema;
 
-  const handleClose = () => {
+  const {
+    execute: executeSave,
+    result,
+    isPending,
+    reset: resetSaveAction,
+  } = useAction(isEdit ? updateCompanyAction : saveCompanyAction, { onSuccess: closeModal });
+  const saveResult = result?.data;
+
+  const methods = useForm<FormType>({
+    mode: 'onBlur',
+    resolver: zodResolver(schemaToUse as never),
+    defaultValues: defaultValues,
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      resetSaveAction();
+      methods.reset({ ...defaultValues });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, defaultValues]);
+
+  function closeModal() {
     updateSearchParams({
       action: undefined,
       editId: undefined,
     });
-  };
+  }
 
-  const onSave = (data: any) => {
-    updateSearchParams({
-      action: undefined,
-      editId: undefined,
+  async function onSubmit(data: FormType) {
+    await executeSave({
+      ...defaultValues,
+      ...data,
     });
-  };
-
-  const isOpen = action === FormActionEnum.Add || (action === FormActionEnum.Edit && !!editId);
-  const isEdit = action === FormActionEnum.Edit;
+  }
 
   return (
-    <SectionFormModal
+    <FormModal
       title={isEdit ? t('titles.edit') : t('titles.add')}
       isOpen={isOpen}
-      onClose={handleClose}
-      serverAction={createCompany}
-      action={action as FormActionEnum}
-      defaultValues={{}}
-      schema={createCompanyFormSchema}
-      onSave={onSave}
+      onClose={closeModal}
+      onSubmit={methods.handleSubmit(onSubmit)}
+      isPending={isPending}
     >
-      {(methods, isPending) => (
-        <div className={'flex flex-col gap-8'}>
-          <div className="flex flex-row gap-4">
-            <Input
-              control={methods.control}
-              name="name"
-              label={t('controls.name.label')}
-              placeholder={t('controls.name.placeholder')}
-              disabled={isPending || isEdit}
-            />
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <FormSuccessMessage isDisplayed={!!saveResult?._id} message={t('messages.success')} className="mb-4" />
+          <FormErrorMessage
+            serverError={result?.serverError}
+            validationErrors={result?.validationErrors}
+            className="mb-4"
+          />
+          <div className={'flex flex-col gap-8'}>
+            <div className="flex flex-row gap-4">
+              <Input
+                control={methods.control}
+                name="name"
+                label={t('controls.name.label')}
+                placeholder={t('controls.name.placeholder')}
+                disabled={isPending || isEdit}
+              />
+            </div>
+            <div className="flex flex-row gap-4">
+              <Input
+                control={methods.control}
+                name="title"
+                label={t('controls.title.label')}
+                placeholder={t('controls.title.placeholder')}
+                disabled={isPending}
+              />
+            </div>
+            <div className="flex flex-row gap-4">
+              <Textarea
+                control={methods.control}
+                name="description"
+                label={t('controls.description.label')}
+                placeholder={t('controls.description.placeholder')}
+                disabled={isPending}
+              />
+            </div>
+            <div className="flex flex-row gap-4">
+              <YesNoRadioGroup
+                control={methods.control}
+                name="isActive"
+                label={t('controls.isActive.label')}
+                disabled={isPending}
+              />
+            </div>
           </div>
-          <div className="flex flex-row gap-4">
-            <Input
-              control={methods.control}
-              name="title"
-              label={t('controls.title.label')}
-              placeholder={t('controls.title.placeholder')}
-              disabled={isPending}
-            />
-          </div>
-          <div className="flex flex-row gap-4">
-            <YesNoRadioGroup
-              control={methods.control}
-              name="isActive"
-              label={t('controls.isActive.label')}
-              disabled={isPending}
-            />
-          </div>
-        </div>
-      )}
-    </SectionFormModal>
+        </form>
+      </FormProvider>
+    </FormModal>
   );
 }

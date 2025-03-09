@@ -2,9 +2,9 @@ import { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import clsx from 'clsx';
-import { fontSans } from '@admin-ui/config/fonts';
-import { siteConfig } from '@admin-ui/config/site';
-import '@admin-ui/styles/globals.css';
+import { fontSans } from '@/config/fonts';
+import { siteConfig } from '@/config/site';
+import '@/styles/globals.css';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {

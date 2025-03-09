@@ -1,8 +1,9 @@
 {
-  "dashboard": "Dashboard",
   "categories": "Categories",
-  "products": "Products",
+  "chat": "Chat",
+  "companies": "Companies",
+  "dashboard": "Dashboard",
   "orders": "Orders",
-  "users": "Users",
-  "chat": "Chat"
+  "products": "Products",
+  "users": "Users"
 }

@@ -4,15 +4,15 @@
   "delete": "Delete",
   "deleting": "Deleting...",
   "edit": "Edit",
+  "error": {
+    "validation": "Validation Error",
+    "generic": "Something went wrong."
+  },
   "form": {
     "messages": {
-      "required": "{control} is required",
-      "min": "{control} must be at least {value} characters",
-      "max": "{control} must be at most {value} characters",
-      "int": "{control} must be a whole number",
-      "idRegex": "{control} should contain small characters, numbers, underscore, hyphen",
-      "selectOne": "Please select at least one {control}",
-      "email": "Invalid email please enter a valid one"
+      "success": "Saved successfully",
+      "delete": "Deleted successfully",
+      "failed": "Form submission failed. Please try again."
     },
     "yesNoControl": {
       "yes": "Yes",

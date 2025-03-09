@@ -1,4 +1,4 @@
-import { RoleEnum } from '@admin-ui/types/role';
+import { RoleEnum } from '@/types/role';
 
 export function useUser() {
   const {

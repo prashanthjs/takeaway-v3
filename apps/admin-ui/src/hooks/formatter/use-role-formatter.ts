@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { RoleEnum } from '@admin-ui/types/role';
+import { RoleEnum } from '@/types/role';
 
 export function useRoleFormatter() {
   const t = useTranslations('common.role');

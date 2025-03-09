@@ -11,7 +11,6 @@
     "^@next/(.*)$",
     "^@heroui/(.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@admin-ui/(.*)$",
     "^@takeaway/(.*)$",
     "^@api/(.*)$",
     "^@types/(.*)$",

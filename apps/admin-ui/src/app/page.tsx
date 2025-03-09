@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useNavigation } from '@admin-ui/hooks/use-navigation';
+import { useNavigation } from '@/hooks/use-navigation';
 
 export default function IndexPage() {
   const router = useRouter();

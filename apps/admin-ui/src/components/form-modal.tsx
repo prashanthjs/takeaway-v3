@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@heroui/react';
-import { cn } from '@admin-ui/lib/utils';
+import { cn } from '@/utils/common';
 
 type Props = {
   title?: string;

@@ -9,9 +9,10 @@ type CardDeleteButtonProps = {
   onPress: () => void;
   children: React.ReactNode;
   isActionDisabled?: boolean;
+  isPending?: boolean;
 };
 
-export function CardDeleteButton({ onPress, children, isActionDisabled }: CardDeleteButtonProps) {
+export function CardDeleteButton({ onPress, children, isActionDisabled, isPending }: CardDeleteButtonProps) {
   const t = useTranslations('common');
   const ref = useRef<HTMLElement>(null);
   return (
@@ -23,7 +24,8 @@ export function CardDeleteButton({ onPress, children, isActionDisabled }: CardDe
           variant="faded"
           aria-label="Delete Button"
           size={'sm'}
-          isDisabled={isActionDisabled}
+          isDisabled={isActionDisabled || isPending}
+          isLoading={isPending}
         >
           <Trash2Icon size={16} />
         </Button>

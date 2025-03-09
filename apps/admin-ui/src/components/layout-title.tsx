@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useLayoutTitle } from '@admin-ui/hooks/use-layout-title';
+import { useLayoutTitle } from '@/hooks/use-layout-title';
 
 type LayoutTitleProps = {
   title: string;

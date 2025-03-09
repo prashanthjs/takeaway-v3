@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { Button, Card, CardBody, cn, Image } from '@heroui/react';
 import { XCircle } from 'lucide-react';
-import { isFile } from '@admin-ui/lib/utils';
+import { isFile } from '@/utils/common';
 
 type FileInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   label?: string;

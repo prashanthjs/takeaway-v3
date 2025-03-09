@@ -1,49 +1,42 @@
-import { useEffect, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
-import { Card, CardBody } from '@heroui/react';
+'use client';
 
-export type ErrorType = string | (Error & { statusCode?: number });
+import { useTranslations } from 'next-intl';
+import { Alert } from '@heroui/react';
+import { se } from 'date-fns/locale';
 
-type ErrorMessageProps = {
-  error: ErrorType | string;
-  defaultErrorMessages?: Record<number, string>;
+type Props = {
+  className?: string;
+  serverError?: string;
+  validationErrors?: Record<string, string[] | undefined>;
 };
 
-export function FormErrorMessage({ error, defaultErrorMessages }: ErrorMessageProps) {
-  const { push } = useRouter();
-  const statusCode = useMemo(() => {
-    if ((error as any)?.response?.status) {
-      return (error as any).response.status;
-    }
-    return undefined;
-  }, [error]);
+export function FormErrorMessage({ serverError, validationErrors, className }: Props) {
+  const t = useTranslations('common');
 
-  const message = useMemo(() => {
-    if (statusCode && defaultErrorMessages && defaultErrorMessages[statusCode]) {
-      return defaultErrorMessages[statusCode];
-    } else if ((error as any)?.response?.data?.message) {
-      return (error as any).response.data.message;
-    } else if (typeof error === 'string') {
-      return error;
+  if (!serverError && !validationErrors) {
+    return null;
+  }
+
+  const errorDescription = (function () {
+    const errors = validationErrors;
+    if (!errors) {
+      return null;
     }
 
-    return (error as Error)?.message;
-  }, [error, defaultErrorMessages, statusCode]);
-
-  useEffect(() => {
-    if (statusCode === 401) {
-      push('/login');
-    }
-    if (statusCode === 403) {
-      push('/dashboard/403');
-    }
-  }, [statusCode, push]);
+    return (
+      <ul className="text-sm list-disc pl-5">
+        {Object.keys(errors).map(key => (
+          <li key={key}>{`${key}: ${validationErrors[key as keyof typeof validationErrors]}`}</li>
+        ))}
+      </ul>
+    );
+  })();
 
   return (
-    <Card className="border-1 border-danger bg-danger-400 bg-opacity-50">
-      <CardBody>
-        <p>{message}</p>
-      </CardBody>
-    </Card>
+    <Alert
+      color="danger"
+      description={serverError ?? errorDescription ?? t('form.messages.failed')}
+      className={className}
+    />
   );
 }

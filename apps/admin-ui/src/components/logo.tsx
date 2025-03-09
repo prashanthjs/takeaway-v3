@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import logoIcon from '@admin-ui/assets/images/logo-icon.png';
-import logo from '@admin-ui/assets/images/logo.png';
-import { cn } from '@admin-ui/lib/utils';
+import logoIcon from '@/assets/images/logo-icon.png';
+import logo from '@/assets/images/logo.png';
+import { cn } from '@/utils/common';
 
 type LogoProps = {
   className?: string;

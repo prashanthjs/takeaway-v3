@@ -8,13 +8,13 @@ import { useNavigation } from '@/hooks/use-navigation';
 import { MaxWidthWrapper } from './max-width-wrapper';
 
 type Props = {
-  status?: number;
-  statusText?: string;
-  errors?: string[];
+  serverError?: string;
+  validationErrors?: Record<string, string[] | undefined>;
 };
 
-export function SectionError({ status, statusText, errors }: Props) {
+export function SectionErrorActionResponse({ serverError, validationErrors }: Props) {
   const t = useTranslations('errorPage.500');
+  const tCommon = useTranslations('common');
   const { homePageLink } = useNavigation();
   const router = useRouter();
 
@@ -27,17 +27,18 @@ export function SectionError({ status, statusText, errors }: Props) {
   };
 
   const errorDescription = (function () {
-    let errorsText = null;
-    if (errors && errors.length > 0) {
-      errorsText = (
-        <ul className="text-sm list-disc pl-5">
-          {errors.map(error => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-      );
+    const errors = validationErrors;
+    if (!errors) {
+      return null;
     }
-    return errorsText;
+
+    return (
+      <ul className="text-sm list-disc pl-5">
+        {Object.keys(errors).map(key => (
+          <li key={key}>{`${key}: ${validationErrors[key as keyof typeof validationErrors]}`}</li>
+        ))}
+      </ul>
+    );
   })();
 
   return (
@@ -52,7 +53,13 @@ export function SectionError({ status, statusText, errors }: Props) {
                 <p className="text-gray-300">{t('description')}</p>
                 <Alert
                   color="danger"
-                  title={statusText ?? status?.toString()}
+                  title={
+                    serverError
+                      ? serverError
+                      : validationErrors
+                        ? tCommon('error.validation')
+                        : tCommon('error.generic')
+                  }
                   description={errorDescription}
                   className="my-8"
                 />

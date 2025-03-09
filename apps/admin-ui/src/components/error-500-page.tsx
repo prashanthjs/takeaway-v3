@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Button, Card, CardBody } from '@heroui/react';
 import { Home, RefreshCw, ServerCrash } from 'lucide-react';
-import { useNavigation } from '@admin-ui/hooks/use-navigation';
+import { useNavigation } from '@/hooks/use-navigation';
 import { MaxWidthWrapper } from './max-width-wrapper';
 
 type Error500PageProps = {

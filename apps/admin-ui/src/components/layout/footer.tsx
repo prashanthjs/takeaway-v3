@@ -1,5 +1,5 @@
-import { MaxWidthWrapper } from '@admin-ui/components/max-width-wrapper';
-import { siteConfig } from '@admin-ui/config/site';
+import { MaxWidthWrapper } from '@/components/max-width-wrapper';
+import { siteConfig } from '@/config/site';
 
 export function Footer() {
   return (

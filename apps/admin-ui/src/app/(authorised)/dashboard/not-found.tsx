@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { Button, Card, CardBody, Link } from '@heroui/react';
 import { Home, ServerCrash } from 'lucide-react';
-import { LayoutTitle } from '@admin-ui/components/layout-title';
-import { MaxWidthWrapper } from '@admin-ui/components/max-width-wrapper';
+import { LayoutTitle } from '@/components/layout-title';
+import { MaxWidthWrapper } from '@/components/max-width-wrapper';
 
 export default function DashboardNotFoundPage() {
   const t = useTranslations('errorPage.403');

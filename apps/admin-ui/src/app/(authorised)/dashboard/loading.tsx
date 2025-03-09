@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardBody, Skeleton, Spinner } from '@heroui/react';
-import { MaxWidthWrapper } from '@admin-ui/components/max-width-wrapper';
+import { MaxWidthWrapper } from '@/components/max-width-wrapper';
 
 export default function DashboardLoading() {
   return (
